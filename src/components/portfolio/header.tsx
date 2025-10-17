@@ -52,10 +52,10 @@ export function Header() {
 
         <div className="flex flex-1 items-center justify-end gap-2">
           {user && (
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild variant="outline">
               <Link href="/edit">
-                <Edit />
-                <span className="sr-only">Edit Details</span>
+                <Edit className="mr-2 h-4 w-4" />
+                Edit Details
               </Link>
             </Button>
           )}
@@ -65,10 +65,10 @@ export function Header() {
               <span className="sr-only">Logout</span>
             </Button>
           ) : (
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild>
               <Link href="/login">
-                <LogIn />
-                <span className="sr-only">Login</span>
+                <LogIn className="mr-2 h-4 w-4" />
+                Login
               </Link>
             </Button>
           )}
