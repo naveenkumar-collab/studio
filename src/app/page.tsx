@@ -2,6 +2,7 @@
 'use client';
 
 import { Certifications } from '@/components/portfolio/certifications';
+import { CollegeGallery } from '@/components/portfolio/college-gallery';
 import { Footer } from '@/components/portfolio/footer';
 import { Header } from '@/components/portfolio/header';
 import { Hero } from '@/components/portfolio/hero';
@@ -35,6 +36,7 @@ export default function Home() {
         <Hero student={student} user={user} />
         <Skills />
         <Projects />
+        <CollegeGallery />
         <Certifications />
       </main>
       <Footer student={student} />
