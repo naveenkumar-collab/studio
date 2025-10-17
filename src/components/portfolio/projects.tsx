@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -32,7 +33,25 @@ const projects = [
     image: PlaceHolderImages.find(p => p.id === 'project3'),
     liveUrl: '#',
     sourceUrl: '#',
-tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    id: 'project4',
+    title: 'Mobile Weather App',
+    description: 'A sleek, user-friendly weather application for iOS and Android, providing real-time weather updates.',
+    image: PlaceHolderImages.find(p => p.id === 'project4'),
+    liveUrl: '#',
+    sourceUrl: '#',
+    tags: ['React Native', 'Expo', 'OpenWeatherMap API'],
+  },
+  {
+    id: 'project5',
+    title: 'Data Analytics Dashboard',
+    description: 'A powerful dashboard for visualizing complex datasets with interactive charts and graphs.',
+    image: PlaceHolderImages.find(p => p.id === 'project5'),
+    liveUrl: '#',
+    sourceUrl: '#',
+    tags: ['D3.js', 'Python', 'Flask', 'Pandas'],
   },
 ];
 

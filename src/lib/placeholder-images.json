@@ -25,6 +25,18 @@
       "imageHint": "laptop desk"
     },
     {
+      "id": "project4",
+      "description": "A placeholder image for a project.",
+      "imageUrl": "https://picsum.photos/seed/project4/600/400",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "project5",
+      "description": "A placeholder image for a project.",
+      "imageUrl": "https://picsum.photos/seed/project5/600/400",
+      "imageHint": "dashboard analytics"
+    },
+    {
       "id": "cert1",
       "description": "A placeholder for a certificate.",
       "imageUrl": "https://picsum.photos/seed/cert1/800/600",

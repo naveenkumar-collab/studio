@@ -15,16 +15,16 @@ export type Student = {
 };
 
 export const defaultStudent: Student = {
-  name: "Alex Doe",
-  title: "Aspiring Web Developer",
-  bio: "A passionate and creative developer with a knack for building beautiful and functional web applications. Eager to learn and contribute to a forward-thinking team.",
+  name: "Jane Smith",
+  title: "Full-Stack Developer",
+  bio: "A creative and detail-oriented full-stack developer, passionate about building scalable and user-friendly web applications. Always excited to learn new technologies and take on challenging projects.",
   contact: {
-    email: "alex.doe@email.com",
-    tel: "+1 234 567 890",
+    email: "jane.smith@example.com",
+    tel: "+1 987 654 3210",
     social: {
-      github: "https://github.com/alexdoe",
-      linkedin: "https://linkedin.com/in/alexdoe",
+      github: "https://github.com/janesmith",
+      linkedin: "https://linkedin.com/in/janesmith",
     },
   },
-  resumeUrl: "/alex-doe-resume.pdf",
+  resumeUrl: "/jane-smith-resume.pdf",
 };
