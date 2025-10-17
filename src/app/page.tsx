@@ -32,7 +32,7 @@ export default function Home() {
     <div className="flex min-h-[100dvh] flex-col bg-background">
       <Header />
       <main className="flex-1">
-        <Hero student={student} />
+        <Hero student={student} user={user} />
         <Skills />
         <Projects />
         <Certifications />

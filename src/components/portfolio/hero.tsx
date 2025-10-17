@@ -6,14 +6,16 @@ import { Mail, Phone, Github, Linkedin, Download, ArrowRight } from 'lucide-reac
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { type Student } from '@/lib/student-data';
+import type { User } from 'firebase/auth';
 
 const avatarImage = PlaceHolderImages.find(p => p.id === 'avatar');
 
 type HeroProps = {
   student: Student;
+  user: User | null;
 };
 
-export function Hero({ student }: HeroProps) {
+export function Hero({ student, user }: HeroProps) {
   const contactDetails = [
     { icon: Mail, value: student.contact.email, href: `mailto:${student.contact.email}` },
     { icon: Phone, value: student.contact.tel, href: `tel:${student.contact.tel}` },
@@ -21,16 +23,19 @@ export function Hero({ student }: HeroProps) {
     { icon: Linkedin, value: student.contact.social.linkedin.replace('https://www.', ''), href: student.contact.social.linkedin, target: '_blank' },
   ];
 
+  const profilePictureUrl = user?.photoURL || avatarImage?.imageUrl;
+  const profilePictureAlt = user?.displayName ? `Profile picture of ${user.displayName}` : avatarImage?.description || 'Avatar';
+
   return (
     <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-card">
       <div className="container px-4 md:px-6">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
           <div className="flex justify-center">
-            {avatarImage && (
+            {profilePictureUrl && (
               <Image
-                src={avatarImage.imageUrl}
-                alt={avatarImage.description}
-                data-ai-hint={avatarImage.imageHint}
+                src={profilePictureUrl}
+                alt={profilePictureAlt}
+                data-ai-hint={avatarImage?.imageHint}
                 width={400}
                 height={400}
                 className="rounded-full object-cover aspect-square shadow-lg border-4 border-primary"
