@@ -16,17 +16,17 @@ export type Student = {
 };
 
 export const defaultStudent: Student = {
-  name: "Satya Nadella",
+  name: "Naveen Kumar",
   title: "Full-Stack Developer",
   college: "Sri Indu College of Engineering and Technology",
   bio: "A creative and detail-oriented full-stack developer, passionate about building scalable and user-friendly web applications. Always excited to learn new technologies and take on challenging projects.",
   contact: {
-    email: "satya.nadella@example.com",
-    tel: "+1 987 654 3210",
+    email: "naveen.kumar@example.com",
+    tel: "+1 123 456 7890",
     social: {
-      github: "https://github.com/microsoft",
-      linkedin: "https://linkedin.com/in/satyanadella",
+      github: "https://github.com/naveenkumar",
+      linkedin: "https://linkedin.com/in/naveenkumar",
     },
   },
-  resumeUrl: "/satya-nadella-resume.pdf",
+  resumeUrl: "/naveen-kumar-resume.pdf",
 };
