@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Code } from 'lucide-react';
+import { Menu, Code, Edit } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -38,10 +38,16 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex flex-1 items-center justify-end md:hidden">
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/edit">
+              <Edit />
+              <span className="sr-only">Edit Details</span>
+            </Link>
+          </Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu />
                 <span className="sr-only">Open Menu</span>
               </Button>
