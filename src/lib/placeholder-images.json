@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "avatar",
+      "description": "A portrait of a person.",
+      "imageUrl": "https://picsum.photos/seed/avatar1/400/400",
+      "imageHint": "portrait person"
+    },
+    {
+      "id": "project1",
+      "description": "A placeholder image for a project.",
+      "imageUrl": "https://picsum.photos/seed/project1/600/400",
+      "imageHint": "technology abstract"
+    },
+    {
+      "id": "project2",
+      "description": "A placeholder image for a project.",
+      "imageUrl": "https://picsum.photos/seed/project2/600/400",
+      "imageHint": "code screen"
+    },
+    {
+      "id": "project3",
+      "description": "A placeholder image for a project.",
+      "imageUrl": "https://picsum.photos/seed/project3/600/400",
+      "imageHint": "laptop desk"
+    },
+    {
+      "id": "cert1",
+      "description": "A placeholder for a certificate.",
+      "imageUrl": "https://picsum.photos/seed/cert1/800/600",
+      "imageHint": "certificate document"
+    },
+    {
+      "id": "cert2",
+      "description": "A placeholder for a certificate.",
+      "imageUrl": "https://picsum.photos/seed/cert2/800/600",
+      "imageHint": "award paper"
+    }
+  ]
 }
