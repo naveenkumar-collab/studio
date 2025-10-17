@@ -1,6 +1,7 @@
 
 'use client';
 
+import { AiAssistant } from '@/components/portfolio/ai-assistant';
 import { Certifications } from '@/components/portfolio/certifications';
 import { CollegeGallery } from '@/components/portfolio/college-gallery';
 import { Footer } from '@/components/portfolio/footer';
@@ -40,6 +41,7 @@ export default function Home() {
         <Certifications />
       </main>
       <Footer student={student} />
+      <AiAssistant student={student} />
     </div>
   );
 }
