@@ -32,11 +32,11 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
+        protocol: 'https' as const,
+        hostname: 'lh3.googleusercontent.com' as const,
         port: '',
         pathname: '/**',
-      }
+      },
     ],
   },
 };
