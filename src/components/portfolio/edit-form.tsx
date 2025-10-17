@@ -34,6 +34,9 @@ const formSchema = z.object({
   title: z.string().min(2, {
     message: "Title must be at least 2 characters.",
   }),
+  college: z.string().min(2, {
+    message: "College must be at least 2 characters.",
+  }),
   bio: z.string().max(200, {
     message: "Bio must not be longer than 200 characters.",
   }),
@@ -65,6 +68,7 @@ export function EditForm() {
       form.reset({
         name: studentData.name,
         title: studentData.title,
+        college: studentData.college,
         bio: studentData.bio,
         email: studentData.contact.email,
         tel: studentData.contact.tel,
@@ -88,6 +92,7 @@ export function EditForm() {
     const studentDataToSave: Student = {
       name: values.name,
       title: values.title,
+      college: values.college,
       bio: values.bio,
       contact: {
         email: values.email,
@@ -143,6 +148,19 @@ export function EditForm() {
               <FormLabel>Title</FormLabel>
               <FormControl>
                 <Input placeholder="Your Title" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="college"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>College</FormLabel>
+              <FormControl>
+                <Input placeholder="Your College" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

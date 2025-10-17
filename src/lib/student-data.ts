@@ -2,6 +2,7 @@
 export type Student = {
   name: string;
   title: string;
+  college: string;
   bio: string;
   contact: {
     email: string;
@@ -15,16 +16,17 @@ export type Student = {
 };
 
 export const defaultStudent: Student = {
-  name: "Jane Smith",
+  name: "Satya Nadella",
   title: "Full-Stack Developer",
+  college: "Sri Indu College of Engineering and Technology",
   bio: "A creative and detail-oriented full-stack developer, passionate about building scalable and user-friendly web applications. Always excited to learn new technologies and take on challenging projects.",
   contact: {
-    email: "jane.smith@example.com",
+    email: "satya.nadella@example.com",
     tel: "+1 987 654 3210",
     social: {
-      github: "https://github.com/janesmith",
-      linkedin: "https://linkedin.com/in/janesmith",
+      github: "https://github.com/microsoft",
+      linkedin: "https://linkedin.com/in/satyanadella",
     },
   },
-  resumeUrl: "/jane-smith-resume.pdf",
+  resumeUrl: "/satya-nadella-resume.pdf",
 };

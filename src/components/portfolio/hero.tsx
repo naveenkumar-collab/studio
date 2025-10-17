@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Mail, Phone, Github, Linkedin, Download, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Download, ArrowRight, School } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { type Student } from '@/lib/student-data';
@@ -48,6 +48,10 @@ export function Hero({ student, user }: HeroProps) {
                 {student.name}
               </h1>
               <p className="text-xl font-medium text-accent">{student.title}</p>
+              <div className="flex items-center gap-3 text-lg">
+                <School className="h-5 w-5 flex-shrink-0" />
+                <span>{student.college}</span>
+              </div>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
                 {student.bio}
               </p>
