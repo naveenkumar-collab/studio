@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, Code, Edit } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -53,6 +54,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+                <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                <SheetDescription className="sr-only">Navigation links for the portfolio.</SheetDescription>
               <div className="flex flex-col gap-6 p-6">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                   <Code className="h-6 w-6 text-accent" />
