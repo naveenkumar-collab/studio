@@ -14,7 +14,7 @@ export type Student = {
   resumeUrl: string;
 };
 
-export const student: Student = {
+export const defaultStudent: Student = {
   name: "Alex Doe",
   title: "Aspiring Web Developer",
   bio: "A passionate and creative developer with a knack for building beautiful and functional web applications. Eager to learn and contribute to a forward-thinking team.",

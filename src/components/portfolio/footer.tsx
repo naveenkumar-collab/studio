@@ -1,11 +1,16 @@
+
 "use client";
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Code } from 'lucide-react';
-import { student } from '@/lib/student-data';
+import { type Student } from '@/lib/student-data';
 
-export function Footer() {
+type FooterProps = {
+  student: Student;
+};
+
+export function Footer({ student }: FooterProps) {
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {

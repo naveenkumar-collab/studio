@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { student } from "@/lib/student-data";
+import { defaultStudent, type Student } from "@/lib/student-data";
+import { useUser, useFirestore, useDoc } from "@/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useEffect } from "react";
+import { useMemoFirebase } from "@/firebase/firestore/use-memo-firebase";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError, type SecurityRuleContext } from '@/firebase/errors';
+
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -37,29 +45,78 @@ const formSchema = z.object({
 });
 
 export function EditForm() {
+  const { user } = useUser();
+  const firestore = useFirestore();
+
+  const userDocRef = useMemoFirebase(() => {
+    if (!firestore || !user) return null;
+    return doc(firestore, 'users', user.uid);
+  }, [firestore, user]);
+
+  const { data: studentData } = useDoc<Student>(userDocRef);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: student.name,
-      title: student.title,
-      bio: student.bio,
-      email: student.contact.email,
-      tel: student.contact.tel,
-      github: student.contact.social.github,
-      linkedin: student.contact.social.linkedin,
-      resumeUrl: student.resumeUrl,
-    },
+    defaultValues: defaultStudent,
   });
 
+  useEffect(() => {
+    if (studentData) {
+      form.reset({
+        name: studentData.name,
+        title: studentData.title,
+        bio: studentData.bio,
+        email: studentData.contact.email,
+        tel: studentData.contact.tel,
+        github: studentData.contact.social.github,
+        linkedin: studentData.contact.social.linkedin,
+        resumeUrl: studentData.resumeUrl,
+      });
+    }
+  }, [studentData, form]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      ),
-    });
+    if (!firestore || !user) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Could not submit form. User not authenticated.",
+      });
+      return;
+    }
+
+    const studentDataToSave: Student = {
+      name: values.name,
+      title: values.title,
+      bio: values.bio,
+      contact: {
+        email: values.email,
+        tel: values.tel,
+        social: {
+          github: values.github,
+          linkedin: values.linkedin,
+        },
+      },
+      resumeUrl: values.resumeUrl,
+    };
+    
+    const docRef = doc(firestore, 'users', user.uid);
+
+    setDoc(docRef, studentDataToSave, { merge: true })
+      .then(() => {
+        toast({
+          title: "Details Updated",
+          description: "Your portfolio information has been saved.",
+        });
+      })
+      .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+          path: docRef.path,
+          operation: 'update',
+          requestResourceData: studentDataToSave,
+        } satisfies SecurityRuleContext);
+        errorEmitter.emit('permission-error', permissionError);
+      });
   }
 
   return (

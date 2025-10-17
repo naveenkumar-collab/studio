@@ -1,0 +1,66 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's profile information.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The user's full name."
+        },
+        "title": {
+          "type": "string",
+          "description": "The user's professional title."
+        },
+        "bio": {
+          "type": "string",
+          "description": "A short biography of the user."
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "social": {
+              "type": "object",
+              "properties": {
+                "github": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "linkedin": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        },
+        "resumeUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "auth": {
+    "providers": [
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Stores user profile information, keyed by user ID."
+    }
+  }
+}

@@ -1,12 +1,19 @@
+
+'use client';
+
 import Image from 'next/image';
 import { Mail, Phone, Github, Linkedin, Download, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { student } from '@/lib/student-data';
+import { type Student } from '@/lib/student-data';
 
 const avatarImage = PlaceHolderImages.find(p => p.id === 'avatar');
 
-export function Hero() {
+type HeroProps = {
+  student: Student;
+};
+
+export function Hero({ student }: HeroProps) {
   const contactDetails = [
     { icon: Mail, value: student.contact.email, href: `mailto:${student.contact.email}` },
     { icon: Phone, value: student.contact.tel, href: `tel:${student.contact.tel}` },

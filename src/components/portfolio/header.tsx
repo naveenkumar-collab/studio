@@ -3,9 +3,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Code, Edit } from 'lucide-react';
+import { Menu, Code, Edit, LogIn, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { useUser } from '@/firebase';
+import { getAuth, signOut } from 'firebase/auth';
+import { useFirebaseApp } from '@/firebase';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -16,6 +19,14 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUser();
+  const app = useFirebaseApp();
+
+  const handleLogout = () => {
+    if (app) {
+      signOut(getAuth(app));
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -40,12 +51,27 @@ export function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <Button asChild variant="ghost" size="icon">
-            <Link href="/edit">
-              <Edit />
-              <span className="sr-only">Edit Details</span>
-            </Link>
-          </Button>
+          {user && (
+            <Button asChild variant="ghost" size="icon">
+              <Link href="/edit">
+                <Edit />
+                <span className="sr-only">Edit Details</span>
+              </Link>
+            </Button>
+          )}
+          {user ? (
+            <Button variant="ghost" size="icon" onClick={handleLogout}>
+              <LogOut />
+              <span className="sr-only">Logout</span>
+            </Button>
+          ) : (
+            <Button asChild variant="ghost" size="icon">
+              <Link href="/login">
+                <LogIn />
+                <span className="sr-only">Login</span>
+              </Link>
+            </Button>
+          )}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
