@@ -1,8 +1,9 @@
+
 "use client";
 
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const certifications = [
@@ -56,6 +57,8 @@ export function Certifications() {
                 </Card>
               </DialogTrigger>
               <DialogContent className="max-w-4xl p-0 border-0">
+                <DialogTitle className="sr-only">{cert.title}</DialogTitle>
+                <DialogDescription className="sr-only">A larger view of the {cert.title} certificate from {cert.issuer}.</DialogDescription>
                 {cert.image && (
                   <Image
                     src={cert.image.imageUrl}

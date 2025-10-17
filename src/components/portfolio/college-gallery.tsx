@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -54,6 +54,8 @@ export function CollegeGallery() {
                         </Card>
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl p-0 border-0">
+                          <DialogTitle className="sr-only">College Image {index + 1}</DialogTitle>
+                          <DialogDescription className="sr-only">{image.description}</DialogDescription>
                           <Image
                             src={image.imageUrl}
                             alt={image.description}
