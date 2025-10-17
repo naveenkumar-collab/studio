@@ -2,15 +2,16 @@ import Image from 'next/image';
 import { Mail, Phone, Github, Linkedin, Download, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { student } from '@/lib/student-data';
 
 const avatarImage = PlaceHolderImages.find(p => p.id === 'avatar');
 
 export function Hero() {
   const contactDetails = [
-    { icon: Mail, value: 'alex.doe@email.com', href: 'mailto:alex.doe@email.com' },
-    { icon: Phone, value: '+1 234 567 890', href: 'tel:+1234567890' },
-    { icon: Github, value: 'github.com/alexdoe', href: 'https://github.com/alexdoe', target: '_blank' },
-    { icon: Linkedin, value: 'linkedin.com/in/alexdoe', href: 'https://linkedin.com/in/alexdoe', target: '_blank' },
+    { icon: Mail, value: student.contact.email, href: `mailto:${student.contact.email}` },
+    { icon: Phone, value: student.contact.tel, href: `tel:${student.contact.tel}` },
+    { icon: Github, value: student.contact.social.github.replace('https://', ''), href: student.contact.social.github, target: '_blank' },
+    { icon: Linkedin, value: student.contact.social.linkedin.replace('https://www.', ''), href: student.contact.social.linkedin, target: '_blank' },
   ];
 
   return (
@@ -32,11 +33,11 @@ export function Hero() {
           <div className="space-y-6">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Alex Doe
+                {student.name}
               </h1>
-              <p className="text-xl font-medium text-accent">Aspiring Web Developer</p>
+              <p className="text-xl font-medium text-accent">{student.title}</p>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                A passionate and creative developer with a knack for building beautiful and functional web applications. Eager to learn and contribute to a forward-thinking team.
+                {student.bio}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -49,7 +50,7 @@ export function Hero() {
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row pt-6">
               <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <a href="/alex-doe-resume.pdf" download>
+                <a href={student.resumeUrl} download>
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </a>
