@@ -6,6 +6,8 @@ import { Header } from '@/components/portfolio/header';
 import { useUser } from '@/firebase';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default function EditPage() {
   const { user, loading } = useUser();
 
