@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Certifications } from '@/components/portfolio/certifications';
@@ -14,6 +15,8 @@ import { useUser } from '@/firebase';
 import { defaultStudent, type Student } from '@/lib/student-data';
 import { useMemo } from 'react';
 import { useMemoFirebase } from '@/firebase/firestore/use-memo-firebase';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const { user } = useUser();
